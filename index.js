@@ -77,6 +77,8 @@ class Seasons {
    * [Exercise 5A] Seasons creates a seasons object
    */
   constructor() {
+    this.seasons = ['summer','fall', 'winter', 'spring']
+    this.current = 0
     // ✨ initialize whatever properties are needed
   }
 
@@ -94,6 +96,13 @@ class Seasons {
    */
   next() {
     // ✨ implement
+    const result = this.seasons[this.current]
+    if(this.current === 3){
+      this.current = 0
+    }else{
+      this.current++
+    }
+    return result
   }
 }
 
@@ -107,6 +116,9 @@ class Car {
   constructor(name, tankSize, mpg) {
     this.odometer = 0 // car initilizes with zero miles
     this.tank = tankSize // car initiazes full of gas
+    this.tankSize = tankSize
+    this.carName = name
+    this.mpg = mpg
     // ✨ initialize whatever other properties are needed
   }
 
@@ -125,6 +137,14 @@ class Car {
    */
   drive(distance) {
     // ✨ implement
+    const distancePossible = this.tank * this.mpg
+     if(distance<= distancePossible){this.odometer = this.odometer + distance
+      this.tank = this.tank - (distance / this.mpg)
+      return this.odometer
+    }
+    this.odometer = this.odometer + distancePossible
+    this.tank = 0
+    return this.odometer
   }
 
   /**
@@ -140,6 +160,12 @@ class Car {
    */
   refuel(gallons) {
     // ✨ implement
+    if(gallons <= this.tankSize - this.tank){
+      this.tank = this.tank + gallons
+    } else {
+      this.tank = this.tankSize
+    }
+    return this.tank * this.mpg
   }
 }
 
