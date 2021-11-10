@@ -10,9 +10,7 @@ describe('[Exercise 1] trimProperties', () => {
   })
   test('[2] returns a copy, leaving the original object intact', () => {
     const input = { foo: '  foo ', bar: 'bar ', baz: ' baz' }
-    const expected = { foo: 'foo', bar: 'bar', baz: 'baz' }
-    const actual = utils.trimProperties(input)
-    expect(actual).toEqual(expected)
+    utils.trimProperties(input)
     expect(input).toEqual({ foo: '  foo ', bar: 'bar ', baz: ' baz' })
   })
 })
@@ -29,12 +27,15 @@ describe('[Exercise 2] trimPropertiesMutation', () => {
     const obj = {name: ' jane '}
     const result = jest.fn(utils.trimPropertiesMutation)
     result(obj)
-    expect(result).toHaveReturnedWith(obj.trim())
+    expect(result).toHaveReturnedWith(obj)
   })
 })
 
 describe('[Exercise 3] findLargestInteger', () => {
-  // test('[5] returns the largest number in an array of objects { integer: 2 }', () => {})
+  test('[5] returns the largest number in an array of objects { integer: 2 }', () => {
+    const result = utils.findLargestInteger([{integer: 20}, {integer: 30}])
+    expect(result).toEqual(30)
+  })
 })
 
 describe('[Exercise 4] Counter', () => {

@@ -6,12 +6,12 @@
  * EXAMPLE
  * trimProperties({ name: '  jane  ' }) // returns a new object { name: 'jane' }
  */
-function trimProperties(foo, bar, baz) {
-  foo = ' foo '
-  bar = ' bar '
-  baz = ' baz '
-return {foo: foo.trim(), bar: bar.trim(), baz: baz.trim()}
-  
+function trimProperties(obj) {
+ const result = {}
+ for(let prop in obj) {
+   result[prop] = obj[prop].trim()
+ }
+  return result
 }
 /**
  * [Exercise 2] trimPropertiesMutation trims in place the properties of an object
@@ -22,8 +22,9 @@ return {foo: foo.trim(), bar: bar.trim(), baz: baz.trim()}
  * trimPropertiesMutation({ name: '  jane  ' }) // returns the object mutated in place { name: 'jane' }
  */
 function trimPropertiesMutation(obj) {
-   obj = {name: ' jane '}
-   Object.keys(obj).map(n => obj[n] = obj[n].trim());
+   for(let prop in obj){
+     obj[prop]= obj[prop].trim()
+   }
   return obj
 }
 
@@ -37,8 +38,8 @@ function trimPropertiesMutation(obj) {
  */
 function findLargestInteger(integers) {
   // ✨ implement
+  return (Math.max.apply(Math, integers.map(o => {return o.integer; })))
 }
-
 class Counter {
   /**
    * [Exercise 4A] Counter creates a counter
