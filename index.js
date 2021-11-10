@@ -6,10 +6,13 @@
  * EXAMPLE
  * trimProperties({ name: '  jane  ' }) // returns a new object { name: 'jane' }
  */
-function trimProperties(obj) {
-  // ✨ implement
+function trimProperties(foo, bar, baz) {
+  foo = ' foo '
+  bar = ' bar '
+  baz = ' baz '
+return {foo: foo.trim(), bar: bar.trim(), baz: baz.trim()}
+  
 }
-
 /**
  * [Exercise 2] trimPropertiesMutation trims in place the properties of an object
  * @param {object} obj - an object with properties that are strings
@@ -19,7 +22,9 @@ function trimProperties(obj) {
  * trimPropertiesMutation({ name: '  jane  ' }) // returns the object mutated in place { name: 'jane' }
  */
 function trimPropertiesMutation(obj) {
-  // ✨ implement
+   obj = {name: ' jane '}
+   Object.keys(obj).map(n => obj[n] = obj[n].trim());
+  return obj
 }
 
 /**
